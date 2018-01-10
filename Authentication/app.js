@@ -34,7 +34,6 @@ client.connect(function(err) {
 app.get('/',function(req,res){
   res.render('index');
 
-
   client.query('SELECT username AS "username", email as "email" FROM users', function(err, result) {
   if(err) {
     return console.error('error running query', err);
@@ -68,7 +67,21 @@ app.get('/login',function(req,res){
 });
 //Login Submit
 app.post('/login', function(req, res){
-
+  var user = new User();
+  user.username = req.body.username;
+  user.password = req.body.password;
+  client.query('SELECT * FROM users WHERE username = $1 AND password = $2',[user.username,user.password], function(err, result) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    else if (result.rows.length!=0){
+      console.log("Log");
+    }
+    else{
+      console.log("Username or password incorrect");
+    }
+    client.end();
+  });
 });
 //Register
 app.get('/register',function(req,res){
