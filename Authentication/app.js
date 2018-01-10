@@ -19,27 +19,49 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+//Set Public Folder
+app.use(express.static(path.join(__dirname,'public')));
 //Database connection
 client.connect(function(err) {
   if(err) {
     return console.error('could not connect to postgres', err);
   }
   else{
-    return console.log('Connected to database');
+    return console.log('Connected to ElephantSQL Database');
   }
 });
 //Home
 app.get('/',function(req,res){
   res.render('index');
-  client.query('SELECT username,email FROM users', function(err, result) {
+
+
+  client.query('SELECT username AS "username", email as "email" FROM users', function(err, result) {
   if(err) {
     return console.error('error running query', err);
   }
-  console.log(result);
+  else{
+    for(var i=0;i<result.rows.length;i++)
+    {
+      console.log(result.rows[i].username+' '+result.rows[i].email);
+    }
+  }
   client.end();
   });
 });
-
+/*
+//Admin
+app.get('/admin',function(req,res){
+  User.find({}, function(err, users){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.render('admin',{
+        username: username
+      });
+    }
+  });
+});*/
 //Login
 app.get('/login',function(req,res){
   res.render('login');
