@@ -8,6 +8,8 @@ var client = new pg.Client(conString);
 //Init app
 const app = express();
 
+//Models
+let User = require('./models/user')
 app.set('views,', path.join(__dirname,'views'));
 app.set('view engine','pug');
 
@@ -29,6 +31,13 @@ client.connect(function(err) {
 //Home
 app.get('/',function(req,res){
   res.render('index');
+  client.query('SELECT username,email FROM users', function(err, result) {
+  if(err) {
+    return console.error('error running query', err);
+  }
+  console.log(result);
+  client.end();
+  });
 });
 
 //Login
@@ -37,12 +46,32 @@ app.get('/login',function(req,res){
 });
 //Login Submit
 app.post('/login', function(req, res){
-  console.log('Submitted');
-  return;
+
 });
 //Register
 app.get('/register',function(req,res){
   res.render('register');
+});
+//Register Submit
+app.post('/register',function(req,res){
+  console.log('Register submitted');
+  var user = new User();
+  user.username = req.body.username;
+  user.email = req.body.email;
+  user.password = req.body.password;
+  //Insert into Database
+  client.query('INSERT into Users(username,email,password) VALUES($1,$2,$3)',[user.username,user.email,user.password],function(err,result){
+  if(err){
+    console.log('Register insert error');
+  }
+  else{
+    console.log('New user inserted into databse');
+  }
+  client.end();
+  });
+
+  //console.log(req.body.username);
+  return;
 });
 //Start server
 app.listen(3000,function(){
