@@ -1,15 +1,20 @@
 <section class="main">
     <div class="centered-container">
-        <label style="float:left; margin-left:10%"><b>Username:</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-    
-        <label style="float:left; margin-left:10%"><b>Password:</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-    
-        <button type="submit">Log in</button>
-        <div>
-          <span class="psw"><a routerLink="/register">Or create a free account</a></span>
-        </div>
-    </div>  
-       
-</section>
+        <form (submit)="loginUser($event)">
+            <div>
+                <label style="float:left; margin-left:10%">Username:</label>
+                <input type="text" placeholder="Enter username">
+            </div>
+            <div>
+                <label style="float:left; margin-left:10%">Password:</label>
+                <input type="password" placeholder="Enter password">
+            </div>
+            <div>
+                <input type="submit" class="inputButton" value="Log in">
+            </div>
+            <div>
+                <span class="psw"><a routerLink="/register">Or create a free account</a></span>
+            </div>
+        </form>
+    </div>        
+</section>  

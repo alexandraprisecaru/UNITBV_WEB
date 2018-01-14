@@ -6,6 +6,8 @@ import { ContentAreaComponent } from './contentArea/app.contentAreaComponent';
 import { AboutComponent } from './about/app.aboutComponent';
 import { LogInComponent } from './logIn/app.logInComponent';
 import { RegisterComponent } from './register/app.registerComponent';
+import { AuthGuard } from './auth-guard.guard';
+
 const routes: Routes = [
   {
     path: 'about', component: AboutComponent
@@ -19,7 +21,6 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   }
-
 ];
 
 @NgModule({

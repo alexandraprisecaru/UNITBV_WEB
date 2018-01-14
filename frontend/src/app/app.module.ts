@@ -34,6 +34,8 @@ import { FooterComponent } from './footer/app.footerComponent';
 import { AboutComponent } from './about/app.aboutComponent';
 import { LogInComponent } from './logIn/app.logInComponent';
 import { RegisterComponent } from './register/app.registerComponent';
+import { UserService } from './service/user.service';
+import { AuthGuard } from './auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { RegisterComponent } from './register/app.registerComponent';
   providers: [
     AppRoutingModule,
     ApiService,
-    AnimalsService
+    AnimalsService, 
+    UserService, 
+    AuthGuard
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,

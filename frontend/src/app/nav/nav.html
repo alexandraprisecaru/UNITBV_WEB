@@ -9,7 +9,20 @@
         <a>Contact</a>
     </li>
 
-    <li>
+    <li [hidden]="!showSignUp" style="float: right">
+        <a routerLink="/register">Sign Up</a>
+    </li>
+
+    <li [hidden]="!showLogIn" style="float: right">
         <a routerLink="/login">Log In</a>
     </li>
+
+    <li [hidden]="!showLogOut" style="float: right">
+        <a routerLink="/register">Log out</a>
+    </li>
+
+    <li [hidden]="!showUsername" style="float: right">
+        <a routerLink="/register">Username</a>
+    </li>
+    
 </ul>    
