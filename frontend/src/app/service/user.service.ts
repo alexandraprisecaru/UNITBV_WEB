@@ -17,12 +17,19 @@ export class UserService{
         return false;
     }
 
+    isUserNameTaken(username:string){
+        if(username=="user"){
+            return true;
+        }
+        return false
+    }
+
     registerNewUser(username:string, password:string){
 
     }
 
     authenticate(){
-        
+
     }
 
     setUserLoggedIn(){

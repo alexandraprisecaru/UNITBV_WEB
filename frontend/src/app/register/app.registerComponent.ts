@@ -20,20 +20,27 @@ export class RegisterComponent{
     var retypedPassword = e.target.elements[2].value;
 
     if(username=="" || password=="" || retypedPassword==""){
+      console.log("Fields cannot be empty");
       return;
     }
 
+    if(!this.userService.isUserExistent(username, password) && this.userService.isUserNameTaken(username)){
+      console.log("User name already taken");
+      return; 
+    }
+    
     if(password!=retypedPassword){
+      console.log("Passwords don't match");
       return;
     }
-
+    
     if(this.userService.isUserExistent(username, password)){
       console.log("User already exists.");
       return;
     }
     
     this.userService.registerNewUser(username, password);
-    
+
 
     return;
   }
