@@ -36,6 +36,12 @@ import { LogInComponent } from './logIn/app.logInComponent';
 import { RegisterComponent } from './register/app.registerComponent';
 import { UserService } from './service/user.service';
 import { AuthGuard } from './auth-guard.guard';
+import { ImageComponent } from './image/image.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { ImageDetailComponent } from './image/image-detail.component';
+import { ImageService } from './image/shared/image.service';
+import { CarouselModule } from 'angular4-carousel/src/app';
+import { ContactComponent } from './contact/app.contactComponent';
 
 @NgModule({
   declarations: [
@@ -49,7 +55,11 @@ import { AuthGuard } from './auth-guard.guard';
     FooterComponent, 
     AboutComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent, 
+    ImageComponent, 
+    GalleryComponent, 
+    ImageDetailComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,
@@ -68,12 +78,14 @@ import { AuthGuard } from './auth-guard.guard';
     ButtonModule,
     InputTextModule,
     ContextMenuModule,
+    CarouselModule
   ],
   providers: [
     AppRoutingModule,
     ApiService,
     AnimalsService, 
     UserService, 
+    ImageService,
     AuthGuard
     // providers used to create fake backend
     // fakeBackendProvider,

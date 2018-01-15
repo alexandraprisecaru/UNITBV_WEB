@@ -8,6 +8,10 @@ import { FooterComponent } from './footer/app.footerComponent';
 import { AboutComponent } from './about/app.aboutComponent';
 import { LogInComponent } from './logIn/app.logInComponent';
 import { RegisterComponent } from './register/app.registerComponent';
+import { ImageComponent } from './image/image.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { ImageDetailComponent } from './image/image-detail.component';
+import { ContactComponent } from './contact/app.contactComponent';
 
 @Component({
   selector: 'app-root',

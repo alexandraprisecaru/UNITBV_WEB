@@ -38,12 +38,14 @@ a, a:hover{
   margin: 0 auto;
   padding: 30px 0;
   background: white;
+  -webkit-transform: translateY(-50px); 
+  -moz-transform: translateY(-50px);
+  transform: translateY(-50px);
 }
 
 header{
   display: block;
   width: 100%;
-  height: 50px;
   background-color: white;
   position: relative;
 }
@@ -64,10 +66,14 @@ nav{
   width: 100%;
   font-size: 0%;
   line-height: 0;
-  margin: 0 auto;
+  margin: 0 0;
   padding: 0;
   background: black;
   color: white;
+  -webkit-transform: translateY(-100%); 
+  -moz-transform: translateY(-100%);
+  transform: translateY(-100%);
+  opacity: 0.8;
 }
 
 nav, 
@@ -98,14 +104,22 @@ nav ul li a:hover{
 
 #container .main{
   display: block;
-  margin: 35px 0;
+  margin: 0 0;
   padding: 0 10px;
+  padding-bottom: 10px;
+  min-height: 400px;
+  
+}
+
+_ngcontent-c0{
+  border-radius: 10px;
+  padding-bottom: 10px; 
 }
 
 footer{
-  background: gray;
-  color:rgb(221, 215, 215);
-  min-height: 250px;
+  background: rgb(187, 185, 185);
+  color:rgb(19, 18, 18);
+  min-height: 0px;
 }
 
 .inputButton {
